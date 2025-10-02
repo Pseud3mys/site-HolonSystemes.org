@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloquons Tout - 10 Septembre 2025 - Reprenons le pouvoir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #1a202c;
+            background-image: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)), url('AG.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .card-icon {
+            background-color: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-red-600">
+                <a href="#">BLOQUONS-TOUT.FR</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#pourquoi" class="text-gray-600 hover:text-red-600">Comprendre</a>
+                <a href="#carte" class="text-gray-600 hover:text-red-600">Agir</a>
+                <a href="#agora" class="text-gray-600 hover:text-red-600">L'Agora</a>
+            </div>
+            <a href="#carte" class="hidden md:block bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">Trouver une action</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4">
+            <a href="#pourquoi" class="block py-2 text-gray-600 hover:text-red-600">Comprendre</a>
+            <a href="#carte" class="block py-2 text-gray-600 hover:text-red-600">Agir</a>
+            <a href="#ressources" class="block py-2 text-gray-600 hover:text-red-600">Ressources</a>
+            <a href="#agora" class="block py-2 text-gray-600 hover:text-red-600">L'Agora</a>
+            <a href="#carte" class="block mt-2 bg-red-600 text-white text-center px-4 py-2 rounded-md hover:bg-red-700 transition">Trouver une action</a>
+        </div>
+    </header>
+
+    <!-- BANNIÈRE DE CONTRIBUTION -->
+    <div class="bg-yellow-300 text-gray-900 text-center p-3 shadow-md">
+        <div class="container mx-auto">
+            <p>
+                <strong>Ce site est une initiative citoyenne et open-source.</strong> 
+                <a href="https://github.com/bloquons-tout/bloquons-tout.fr" target="_blank" rel="noopener noreferrer" class="font-bold underline hover:text-black transition">
+                    Aidez-nous à le construire sur GitHub !
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-20 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">Le 10 Septembre, on bloque tout !</h1>
+                <p class="mt-4 text-lg md:text-2xl font-light max-w-3xl mx-auto">Il est temps de faire entendre nos voix et de construire ensemble un autre avenir.</p>
+                
+                <!-- Countdown Timer -->
+                <div id="countdown" class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                    <div class="countdown-item">
+                        <span id="days" class="text-4xl font-bold">00</span>
+                        <span class="block text-sm">Jours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="text-4xl font-bold">00</span>
+                        <span class="block text-sm">Heures</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="text-4xl font-bold">00</span>
+                        <span class="block text-sm">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="text-4xl font-bold">00</span>
+                        <span class="block text-sm">Secondes</span>
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                    <a href="#carte" class="bg-red-600 text-white text-xl font-bold px-8 py-4 rounded-lg hover:bg-red-700 transition transform hover:scale-105">Je trouve une action près de chez moi</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- POURQUOI NOUS BLOQUONS TOUT -->
+        <section id="pourquoi" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Un mouvement citoyen et pacifique</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">Cette plateforme sert d'outil de coordination pour des actions pacifiques et de lieu de partage pour construire des solutions. Voici les grands thèmes qui animent cette mobilisation :</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="p-8 rounded-lg shadow-lg bg-gray-50">
+                        <div class="card-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1m0 12v-1a2 2 0 00-2-2h-1a2 2 0 00-2 2v1a2 2 0 002 2h1a2 2 0 002-2zm-6 0v-1a2 2 0 012-2h1a2 2 0 012 2v1a2 2 0 01-2 2h-1a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Pour un budget équitable</h3>
+                        <p class="text-gray-600">Nous nous opposons à un plan d'austérité qui fragilise le pouvoir d'achat et nos services publics. Nous croyons qu'un autre équilibre budgétaire, plus juste et solidaire, est possible.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="p-8 rounded-lg shadow-lg bg-gray-50">
+                        <div class="card-icon">
+                           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 01-9-9V8a9 9 0 0118 0v4a9 9 0 01-9 9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Pour la justice sociale</h3>
+                        <p class="text-gray-600">Nous aspirons à une meilleure répartition des richesses. Nous proposons une revalorisation du travail et des revenus modestes, financée par une fiscalité plus équitable.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="p-8 rounded-lg shadow-lg bg-gray-50">
+                        <div class="card-icon">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Pour une démocratie vivante</h3>
+                        <p class="text-gray-600">Nous souhaitons un système où les citoyens sont plus impliqués dans les grandes décisions. Nous soutenons les initiatives qui renforcent le dialogue et le pouvoir d'agir de chacun.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<!-- CARTE INTERACTIVE -->
+		<section id="carte" class="py-16 md:py-24 bg-gray-800 text-white">
+			<div class="container mx-auto px-6 text-center">
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">Passez à l'action le 10 Septembre</h2>
+				<p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">Le mouvement est partout en France. Trouvez le point de blocage, la manifestation ou l'assemblée générale la plus proche de chez vous.</p>
+				
+				<div class="relative w-full aspect-[4/3] max-w-4xl mx-auto rounded-md overflow-hidden shadow-inner">
+				<iframe 
+					id="gogocartoMap"
+					src="https://cartedesagbfc.gogocarto.fr/map#/carte/@48.878,2.410,12z?cat=all" 
+					width="100%" 
+					height="100%" 
+					frameborder="0" 
+					allowfullscreen
+					style="border-radius: 6px;"
+					title="Carte interactive des actions du 10 septembre">
+				</iframe>
+				
+				<!-- Overlay pour indiquer que c'est interactif -->
+				<div class="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+					Carte interactive
+				</div>
+			</div>
+					
+					<p class="mt-6 text-gray-400">Cette carte est mise à jour en temps réel par les comités locaux.</p>
+				</div>
+			</div>
+		</section>
+       
+
+        <!-- VERS L'AGORA -->
+        <section id="agora" class="py-16 md:py-24 bg-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Le 10 Septembre n'est qu'un début</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8">Ce site n'est pas qu'un outil pour une journée d'action. C'est la première pierre d'une agora citoyenne permanente. Un espace pour débattre, proposer et construire ensemble l'avenir que nous voulons.</p>
+                <div class="max-w-xl mx-auto">
+                    <p class="font-bold mb-4">Rejoignez la construction de l'après :</p>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                <iframe src="https://cryptpad.fr/form/#/2/form/view/FIwjApxq7khnXt8Wt5O7BfVrAkTeUFJjSY3joZrJwVI/embed/" 
+                        width="100%" height="300" frameborder="0">
+                </iframe>
+            </div>
+                    <p class="text-xs text-gray-600 mt-2">Nous ne partagerons jamais votre e-mail. Vous recevrez des informations sur les prochaines étapes du mouvement et la construction de l'agora.</p>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">BLOQUONS-TOUT.FR</h3>
+                    <p class="text-gray-400">La plateforme citoyenne pour la justice sociale et démocratique.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-3">Navigation</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#pourquoi" class="text-gray-400 hover:text-white">Comprendre le mouvement</a></li>
+                        <li class="mb-2"><a href="#carte" class="text-gray-400 hover:text-white">Carte des actions</a></li>
+                        <li><a href="#agora" class="text-gray-400 hover:text-white">Construire l'Agora</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-3">Suivre le mouvement</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">Github</a>
+                        <a href="https://piaille.fr/explore" class="text-gray-400 hover:text-white">Mastodon</a>
+                        <a href="https://reseaumutu.info/" class="text-gray-400 hover:text-white">Mutu.info</a>
+                        <a href="https://10s25.fr/" class="text-gray-400 hover:text-white">10s25.fr (lien Telegram)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Le Mouvement Citoyen. Site conçu comme un bien commun. Votre sécurité est notre priorité : nous ne collectons aucune donnée personnelle superflue.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer Logic
+        const countdownDate = new Date("Sep 10, 2025 06:00:00").getTime();
+        
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance >= 0) {
+                // Compteur avant la date
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            } else {
+                // Compteur après la date - calcul du temps écoulé
+                const elapsed = Math.abs(distance);
+                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+                // Mise à jour du HTML pour afficher le temps écoulé
+                document.getElementById("countdown").innerHTML = `
+                    <div class="col-span-2 md:col-span-4 mb-4">
+                        <p class="text-xl md:text-2xl font-bold text-green-400">Mouvement commencé depuis :</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="text-4xl font-bold">${days.toString().padStart(2, '0')}</span>
+                        <span class="block text-sm">Jours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="text-4xl font-bold">${hours.toString().padStart(2, '0')}</span>
+                        <span class="block text-sm">Heures</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="text-4xl font-bold">${minutes.toString().padStart(2, '0')}</span>
+                        <span class="block text-sm">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="text-4xl font-bold">${seconds.toString().padStart(2, '0')}</span>
+                        <span class="block text-sm">Secondes</span>
+                    </div>
+                `;
+            }
+        }, 1000);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
