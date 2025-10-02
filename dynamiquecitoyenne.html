@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Interactif de la Dynamique Citoyenne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A single-page application with vertical scrolling and a sticky navigation header. The structure is thematic, guiding the user through the core concepts: 1) The new philosophy, 2) The 3-step citizen engagement method (interactive steps), 3) Common pitfalls and their solutions (interactive cards), 4) The synergy between physical and digital tools (diagram and chart), and 5) The internal organizational model (diagram). This structure was chosen to break down a complex methodology into digestible, interactive modules, prioritizing user learning and exploration over a linear report format. -->
+    <!-- Visualization & Content Choices: Report Info: 3-step process -> Goal: Explain a sequence -> Viz: Interactive tab/accordion -> Interaction: Click to reveal details -> Justification: Breaks down a process into manageable steps. Report Info: Common pitfalls -> Goal: Compare problems and solutions -> Viz: Grid of interactive cards -> Interaction: Click to flip/expand -> Justification: Allows users to focus on one problem at a time. Report Info: Physical vs. Digital Scale -> Goal: Show difference in capacity -> Viz: Bar Chart (Chart.js) -> Interaction: Static view with tooltips -> Justification: A simple chart is the most effective way to communicate a quantitative difference in scale. Report Info: Organizational Structure -> Goal: Show relationships -> Viz: HTML/CSS Diagram -> Interaction: Click on roles for info -> Justification: A visual diagram is clearer than text for showing hierarchical/network relationships. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #3D3D3D;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active {
+            color: #C06C59;
+            border-bottom: 2px solid #C06C59;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card-back {
+            display: none;
+        }
+        .card.is-flipped .card-front {
+            display: none;
+        }
+        .card.is-flipped .card-back {
+            display: block;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-btn.active {
+            background-color: #EAE2D9;
+            color: #C06C59;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-gray-800">Dynamique Citoyenne</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#philosophie" class="nav-link text-gray-600 hover:text-[#C06C59] pb-1">Philosophie</a>
+                    <a href="#methode" class="nav-link text-gray-600 hover:text-[#C06C59] pb-1">La Méthode</a>
+                    <a href="#freins" class="nav-link text-gray-600 hover:text-[#C06C59] pb-1">Les Freins</a>
+                    <a href="#synergie" class="nav-link text-gray-600 hover:text-[#C06C59] pb-1">Synergie</a>
+                    <a href="#organisation" class="nav-link text-gray-600 hover:text-[#C06C59] pb-1">Organisation</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="philosophie" class="min-h-[60vh] flex items-center">
+            <div class="w-full text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">Lancer la vague citoyenne</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    Cette page web est un guide interactif pour comprendre et mettre en œuvre une nouvelle forme de mobilisation politique. L'objectif n'est plus de "faire participer les gens" de manière descendante, mais de créer une dynamique auto-entretenue où la participation devient une culture locale.
+                </p>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-500 mb-2">
+                        → Retrouvez un 
+                        <a href="https://docs.google.com/document/d/1EZnGMalCO2bp32UmwncD0BA7NuPey8Mq9vug3Y3Gejg/edit?usp=sharing" 
+                           target="_blank" 
+                           class="text-[#C06C59] hover:text-[#A55647] underline font-medium">
+                            manuel de terrain détaillé
+                        </a> 
+                         avec des exemples concrets d'application
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="methode" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">La méthode en 3 étapes : créer la vague</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Le processus est conçu pour transformer des préoccupations individuelles en projets collectifs portés par les habitants eux-mêmes. Explorez chaque étape pour découvrir la posture à adopter et les outils à utiliser.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center border-b border-gray-200 mb-8">
+                    <button class="tab-btn px-6 py-3 font-semibold text-gray-600 rounded-t-lg transition" data-tab="1">1. La Récolte</button>
+                    <button class="tab-btn px-6 py-3 font-semibold text-gray-600 rounded-t-lg transition" data-tab="2">2. La Synthèse</button>
+                    <button class="tab-btn px-6 py-3 font-semibold text-gray-600 rounded-t-lg transition" data-tab="3">3. L'Action</button>
+                </div>
+
+                <div id="tab-1" class="tab-content bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 text-[#C06C59]">Étape 1 : La grande récolte des "étincelles"</h3>
+                    <p class="mb-4 text-gray-700">La première mission est de devenir un collecteur des préoccupations réelles des habitants. On ne cherche pas des "projets", mais des "étincelles" : observations, frustrations, idées simples issues du quotidien.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Posture à adopter</h4>
+                            <p>Vous êtes des journalistes de terrain, pas des candidats. Votre seule question est : "Racontez-nous votre quotidien ici." L'écoute prime sur le discours.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Outils principaux</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Porte-à-porte d'écoute</li>
+                                <li>Mur d'expression sur le marché</li>
+                                <li>Balades de quartier</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-2" class="tab-content bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 text-[#C06C59]">Étape 2 : La fabrique du sens</h3>
+                    <p class="mb-4 text-gray-700">Cette étape est cruciale : il ne s'agit pas de trier les "étincelles" seuls, mais de le faire avec les habitants lors d'ateliers. C'est ici que les frustrations individuelles deviennent des enjeux collectifs partagés.</p>
+                     <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Posture à adopter</h4>
+                            <p>Vous êtes des facilitateurs. Votre rôle est de donner un cadre pour que l'intelligence collective opère et que les participants fassent des liens eux-mêmes.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Outil principal</h4>
+                            <p class="text-gray-600">L'atelier de cartographie citoyenne : les habitants manipulent physiquement des post-its (correspondant à une partie de la carte, par ex. un quartier) pour regrouper, trier et créer du sens.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-3" class="tab-content bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 text-[#C06C59]">Étape 3 : L'auto-organisation accompagnée</h3>
+                    <p class="mb-4 text-gray-700">Le moment où l'on "passe le relais". L'objectif n'est pas d'apporter les solutions, mais d'aider les citoyens motivés à les construire, en devenant des coachs de projets citoyens.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Posture à adopter</h4>
+                            <p>Vous êtes des coachs. Vous ne participez pas au contenu, mais vous fournissez le support : une méthode, des contacts, une aide logistique.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Méthode</h4>
+                             <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Identifier les "moteurs" volontaires.</li>
+                                <li>Leur donner un mandat clair et une mission.</li>
+                                <li>Les outiller, pas les diriger.</li>
+                                <li>Organiser une restitution publique de leur travail.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="freins" class="py-16 bg-[#EAE2D9] -mx-6 px-6">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Identifier et surmonter les freins</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Toute démarche participative se heurte à des obstacles récurrents. Les connaître, c'est pouvoir les anticiper. Cliquez sur chaque carte pour découvrir le problème et les meilleures pratiques pour y remédier.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="1">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">L'effet "boîte noire"</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">Un citoyen contribue, puis n'a aucun retour. Sa motivation se transforme en frustration.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Mettre en place une traçabilité publique des contributions (ex: tableau de suivi partagé) et un accusé de réception systématique.</p>
+                    </div>
+                </div>
+
+                <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="2">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">L'épuisement des moteurs</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">Quelques individus "piliers" portent tout le collectif et finissent en burn-out, paralysant le groupe.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Rendre le travail invisible (logistique, coordination) visible et le répartir. Pratiquer la rotation systématique des rôles clés.</p>
+                    </div>
+                </div>
+
+                <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="3">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">Le "club des initiés"</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">On retrouve toujours les mêmes profils (retraités, classes moyennes+) dans les réunions.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Multiplier activement les formats et les lieux pour aller chercher les publics absents : porte-à-porte, cafés-discussions, etc.</p>
+                    </div>
+                </div>
+                 <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="4">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">La capture par les "experts"</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">Quelques personnes maîtrisant un sujet monopolisent la parole et intimident le reste du groupe.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Utiliser des techniques de facilitation qui garantissent l'égalité de la parole (ex: post-its, tours de parole minutés).</p>
+                    </div>
+                </div>
+
+                 <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="5">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">La barrière du temps</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">"C'est super, mais je n'ai pas le temps". Le ticket d'entrée pour participer est trop élevé pour la majorité.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Développer une participation "à la carte" avec des micro-contributions de 30 secondes (vote SMS) et des engagements plus longs.</p>
+                    </div>
+                </div>
+
+                 <div class="card cursor-pointer bg-white rounded-lg shadow-lg p-6" data-card="6">
+                    <div class="card-front">
+                        <h3 class="text-xl font-bold text-center">La peur du conflit</h3>
+                    </div>
+                    <div class="card-back">
+                        <h4 class="font-bold mb-2">Symptôme</h4>
+                        <p class="text-sm mb-3">Les débats sont trop polis, évitent les sujets qui fâchent et aboutissent à des consensus mous.</p>
+                        <h4 class="font-bold mb-2">Solution</h4>
+                        <p class="text-sm">Instaurer des règles de débat saines ("on attaque les idées, pas les personnes") pour dépersonnaliser les désaccords.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="synergie" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Synergie : articuler terrain et numérique</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">L'outil numérique n'est pas un remplaçant du terrain, mais un amplificateur. Il permet de gérer le passage à l'échelle que les actions physiques seules ne peuvent supporter. Le terrain crée le lien et la confiance, l'outil gère le volume et facilite l'organisation.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl mb-4 text-center">Le cycle vertueux</h3>
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="font-semibold text-lg">1. Action de Terrain</div>
+                            <p class="text-gray-600">Crée la confiance, atteint la diversité, récolte des "étincelles" authentiques.</p>
+                            <div class="text-2xl my-2 text-[#C06C59]">↓</div>
+                        </div>
+                         <div class="text-center">
+                            <div class="font-semibold text-lg">2. Outil Numérique</div>
+                            <p class="text-gray-600">Centralise les données, offre un canal complémentaire, assure la traçabilité.</p>
+                            <div class="text-2xl my-2 text-[#C06C59]">↓</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-semibold text-lg">3. Organisation Autonome</div>
+                            <p class="text-gray-600">Les citoyens utilisent l'outil pour se regrouper et organiser de nouvelles actions... sur le terrain !</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                     <h3 class="font-bold text-xl mb-4 text-center">Le défi de l'échelle</h3>
+                     <p class="text-center text-gray-600 mb-4">Un atelier physique peut traiter quelques dizaines d'idées. Une plateforme numérique peut en gérer des milliers, permettant une participation beaucoup plus large.</p>
+                    <div class="chart-container">
+                        <canvas id="scaleChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section id="organisation" class="py-16 bg-[#EAE2D9] -mx-6 px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Une organisation en réseau</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Pour éviter la pyramide du pouvoir, la structure est un réseau de "cercles" autonomes. Chaque cercle a une mission claire et prend ses décisions par consentement. Les rôles clés doivent tourner régulièrement.</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="bg-white rounded-lg shadow-md p-6 border-2 border-gray-300">
+                    <h3 class="text-xl font-bold">Assemblée Générale</h3>
+                    <p class="text-sm text-gray-500">Souveraine - Valide la stratégie et les décisions majeures</p>
+                </div>
+                <div class="w-px h-8 bg-gray-300 mx-auto"></div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-2 border-[#C06C59]">
+                    <h3 class="text-xl font-bold">Cercle de Pilotage</h3>
+                    <p class="text-sm text-gray-500">Coordination - Fait le lien entre les cercles thématiques</p>
+                </div>
+                <div class="w-px h-8 bg-gray-300 mx-auto"></div>
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-lg shadow-md p-4 border border-gray-300">
+                        <h4 class="font-bold">Cercle Communication</h4>
+                        <p class="text-sm text-gray-500">Action</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 border border-gray-300">
+                        <h4 class="font-bold">Cercle Programme</h4>
+                        <p class="text-sm text-gray-500">Action</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 border border-gray-300">
+                        <h4 class="font-bold">Cercle Logistique</h4>
+                        <p class="text-sm text-gray-500">Action</p>
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                     <h3 class="text-2xl font-bold mb-4">Les 3 rôles clés (tournants)</h3>
+                     <div class="grid md:grid-cols-3 gap-8 text-left">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg">Le Facilitateur</h4>
+                            <p class="text-gray-600">Garantit le respect du processus de décision et distribue la parole. Ne participe pas au débat sur le fond.</p>
+                        </div>
+                         <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg">Le Secrétaire</h4>
+                            <p class="text-gray-600">Prend note des décisions et des actions à mener (Qui, Quoi, Quand). Rend le compte-rendu accessible à tous.</p>
+                        </div>
+                         <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-lg">Le Délégué</h4>
+                            <p class="text-gray-600">Assure le lien avec le Cercle de Pilotage, faisant remonter et descendre l'information.</p>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>Construire une dynamique citoyenne résiliente et authentique.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const tabs = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            function activateTab(tabNumber) {
+                tabs.forEach(tab => {
+                    tab.classList.toggle('active', tab.dataset.tab === tabNumber);
+                });
+                tabContents.forEach(content => {
+                    content.classList.toggle('active', content.id === `tab-${tabNumber}`);
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    activateTab(tab.dataset.tab);
+                });
+            });
+
+            activateTab('1');
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('is-flipped');
+                });
+            });
+
+            const scaleCtx = document.getElementById('scaleChart').getContext('2d');
+            new Chart(scaleCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Atelier Physique', 'Plateforme Numérique'],
+                    datasets: [{
+                        label: 'Capacité de traitement des "étincelles"',
+                        data: [50, 5000],
+                        backgroundColor: [
+                            'rgba(234, 226, 217, 0.6)',
+                            'rgba(192, 108, 89, 0.6)'
+                        ],
+                        borderColor: [
+                            '#EAE2D9',
+                            '#C06C59'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            type: 'logarithmic',
+                            title: {
+                                display: true,
+                                text: 'Nombre d\'idées (échelle log)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + ' idées';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            function onScroll() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', onScroll);
+        });
+    </script>
+</body>
+</html>
+
