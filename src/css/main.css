@@ -131,9 +131,9 @@ h1, h2, h3, h4 {
     display: inline-block;
     background-color: var(--accent-light);
     color: var(--accent-color);
-    padding: 0.25rem 0.75rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 0.25rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     border: 1px solid var(--accent-color);
@@ -204,17 +204,10 @@ h1, h2, h3, h4 {
     color: white;
 }
 
-/* Articles externes */
-.external-article {
+/* Articles du blog */
+.article-item {
     position: relative;
     padding-left: 1rem;
     border-left: 2px solid #e5e7eb;
 }
 
-.external-article::before {
-    content: '↗';
-    position: absolute;
-    left: -0.5rem;
-    top: 0;
-    color: #9ca3af;
-}

@@ -42,17 +42,35 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("allArticles", async function(collectionApi) {
     const parser = new Parser();
     let allArticles = [];
+    let sourceName = 'Holon Systems'; // Nom par défaut
+    let sourceTags = []; // Tags de la source
+    
+    // Récupérer le nom de la source pour les articles internes depuis rssFeeds.json
+    try {
+      const rssFeeds = require('./src/_data/rssFeeds.json');
+      const internalFeed = rssFeeds.find(feed => feed.url === 'internal');
+      if (internalFeed) {
+        sourceName = internalFeed.name;
+        sourceTags = internalFeed.tags || [];
+      }
+    } catch (err) {
+      // Utiliser le nom par défaut
+    }
     
     // Récupérer les articles manuels
     const manualPosts = collectionApi.getFilteredByGlob("src/content/blog/*.md");
     manualPosts.forEach(post => {
+      // Fusionner les tags de l'article avec les tags de la source
+      const articleTags = post.data.tags || [];
+      const allTags = [...new Set([...articleTags, ...sourceTags])]; // Éviter les doublons
+      
       allArticles.push({
         title: post.data.title,
         url: post.url,
         date: post.date,
         excerpt: post.data.excerpt || '',
-        tags: post.data.tags || [],
-        source: 'Holon Systems',
+        tags: allTags,
+        source: sourceName,
         isExternal: false
       });
     });
@@ -62,15 +80,25 @@ module.exports = function(eleventyConfig) {
       const rssFeeds = require('./src/_data/rssFeeds.json');
       
       for (const feed of rssFeeds) {
+        // Ignorer les entrées "internal" car elles représentent les articles manuels
+        if (feed.url === 'internal') {
+          continue;
+        }
+        
         try {
           const parsed = await parser.parseURL(feed.url);
           parsed.items.slice(0, feed.maxItems || 10).forEach(item => {
+            // Parser les catégories RSS si disponibles
+            const rssCategories = item.categories || [];
+            const feedTags = feed.tags || [];
+            const allTags = [...new Set([...rssCategories, ...feedTags])]; // Fusionner et éviter les doublons
+            
             allArticles.push({
               title: item.title,
               url: item.link,
               date: new Date(item.pubDate || item.isoDate),
               excerpt: item.contentSnippet || item.content || '',
-              tags: feed.tags || [],
+              tags: allTags,
               source: feed.name,
               isExternal: true
             });
@@ -88,15 +116,38 @@ module.exports = function(eleventyConfig) {
     return allArticles.sort((a, b) => b.date - a.date);
   });
   
+  // Collection pour les sources (noms des flux RSS)
+  eleventyConfig.addCollection("sources", function(collectionApi) {
+    try {
+      const rssFeeds = require('./src/_data/rssFeeds.json');
+      return rssFeeds.map(feed => feed.name);
+    } catch (err) {
+      return [];
+    }
+  });
+  
   // Collection pour les tags
-  eleventyConfig.addCollection("tagsList", function(collectionApi) {
+  eleventyConfig.addCollection("tagsList", async function(collectionApi) {
     const tagsSet = new Set();
     
+    // Récupérer les tags des articles manuels
     collectionApi.getAll().forEach(item => {
       if (item.data.tags) {
         item.data.tags.forEach(tag => tagsSet.add(tag));
       }
     });
+    
+    // Récupérer les tags des flux RSS
+    try {
+      const rssFeeds = require('./src/_data/rssFeeds.json');
+      rssFeeds.forEach(feed => {
+        if (feed.tags) {
+          feed.tags.forEach(tag => tagsSet.add(tag));
+        }
+      });
+    } catch (err) {
+      // Pas de flux RSS
+    }
     
     return Array.from(tagsSet).sort();
   });

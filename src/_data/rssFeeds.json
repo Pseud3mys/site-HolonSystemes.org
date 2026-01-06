@@ -1,8 +1,15 @@
 [
   {
-    "name": "Blog Exemple",
-    "url": "https://example.com/rss",
-    "tags": ["exemple", "veille"],
-    "maxItems": 5
+    "name": "Équipe Holon",
+    "url": "internal",
+    "tags": ["Holon Systems", "réflexions"],
+    "maxItems": null,
+    "description": "Articles rédigés par l'équipe Holon Systems"
+  },
+  {
+    "name": "Le blog d'Alex",
+    "url": "https://alex118010.substack.com/feed",
+    "tags": ["blog perso", "membres"],
+    "maxItems": 10
   }
 ]

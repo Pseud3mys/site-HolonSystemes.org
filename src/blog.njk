@@ -10,13 +10,39 @@ permalink: /blog/
     <p class="mt-6 max-w-2xl mx-auto text-xl">Réflexions sur l'ingénierie sociale, les systèmes distribués et l'intelligence collective.</p>
 </section>
 
-<section class="py-16 space-y-20 border-t border-gray-200">
+<!-- Menu de filtrage -->
+<section class="py-4 border-t border-gray-200">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap items-center gap-4 text-sm">
+            <span class="text-gray-500 text-xs uppercase tracking-wide">Filtrer :</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <button class="filter-btn active" data-filter="all" data-type="source">Tous</button>
+                {% for source in collections.sources %}
+                <button class="filter-btn" data-filter="{{ source }}" data-type="source">{{ source }}</button>
+                {% endfor %}
+            </div>
+            <span class="text-gray-300">|</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="text-gray-400 text-xs">Tags:</span>
+                {% for tag in collections.tagsList %}
+                <button class="filter-btn tag-filter" data-filter="{{ tag }}" data-type="tag">{{ tag }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-8 space-y-12 border-t border-gray-200">
     
     {% for article in collections.allArticles %}
-    <article class="{% if article.isExternal %}external-article{% endif %}">
+    <article class="article-item" 
+             data-source="{{ article.source }}" 
+             data-tags="{{ article.tags | join(',') }}">
         <p class="text-sm text-gray-500">
             {{ article.date | dateToShort }}
             {% if article.isExternal %}
+            <span class="source-badge ml-2">{{ article.source }}</span>
+            {% else %}
             <span class="source-badge ml-2">{{ article.source }}</span>
             {% endif %}
         </p>
@@ -46,3 +72,100 @@ permalink: /blog/
     {% endfor %}
 
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.article-item');
+    
+    let activeSourceFilter = 'all';
+    let activeTagFilters = []; // Permet la sélection multiple de tags
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            const type = this.getAttribute('data-type');
+            
+            if (type === 'source') {
+                // Update active state for source buttons (un seul à la fois)
+                document.querySelectorAll(`.filter-btn[data-type="source"]`).forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                activeSourceFilter = filter;
+            } else if (type === 'tag') {
+                // Toggle tag filter (sélection multiple)
+                if (this.classList.contains('active')) {
+                    // Désactiver le tag
+                    this.classList.remove('active');
+                    activeTagFilters = activeTagFilters.filter(t => t !== filter);
+                } else {
+                    // Activer le tag
+                    this.classList.add('active');
+                    activeTagFilters.push(filter);
+                }
+            }
+            
+            // Apply filters
+            articles.forEach(article => {
+                const articleSource = article.getAttribute('data-source');
+                const articleTags = article.getAttribute('data-tags').split(',').filter(t => t.trim());
+                
+                // Vérifier le filtre de source
+                const sourceMatch = activeSourceFilter === 'all' || articleSource === activeSourceFilter;
+                
+                // Vérifier le filtre de tags (tous les tags sélectionnés doivent être présents)
+                let tagMatch = true;
+                if (activeTagFilters.length > 0) {
+                    tagMatch = activeTagFilters.every(selectedTag => 
+                        articleTags.includes(selectedTag)
+                    );
+                }
+                
+                if (sourceMatch && tagMatch) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+
+<style>
+.filter-btn {
+    padding: 0.25rem 0.625rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.filter-btn:hover {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+.filter-btn.active {
+    background-color: #f3f4f6;
+    color: #111827;
+    border-color: #d1d5db;
+    font-weight: 500;
+}
+
+.filter-btn.tag-filter {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+}
+
+.filter-btn.tag-filter.active {
+    background-color: var(--accent-color, #000);
+    color: white;
+    border-color: var(--accent-color, #000);
+}
+</style>
+
