@@ -4,8 +4,6 @@ title: "IdeoSphere"
 tagline: "GitHub pour l'action citoyenne"
 featured: true
 excerpt: "Une plateforme qui permet aux citoyens de co-construire des programmes politiques locaux en s'inspirant du modèle fork/pull request du développement logiciel."
-image: "https://placehold.co/800x500/fdfaf7/A37A55?text=IdeoSphere"
-video: ""
 status: "Déployé pour les municipales 2025"
 ---
 
@@ -47,9 +45,17 @@ IdeoSphere a été déployé dans **plusieurs listes citoyennes** pour les élec
 
 ## Vidéo de démonstration
 
-<div class="my-8">
-    <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-        <p class="text-gray-500">[Vidéo de démonstration à venir]</p>
+<div class="my-8 max-w-4xl mx-auto">
+    <div class="aspect-video rounded-lg overflow-hidden">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/DdKhkR8Iats" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+            class="w-full h-full">
+        </iframe>
     </div>
 </div>
 
@@ -67,5 +73,5 @@ IdeoSphere a été déployé dans **plusieurs listes citoyennes** pour les élec
 Que vous soyez une liste citoyenne, une association, une coopérative ou un collectif, nous pouvons vous accompagner dans le déploiement d'IdeoSphere.
 
 <div class="text-center my-8">
-    <a href="mailto:contact@holonsystems.org?subject=Déployer IdeoSphere" class="cta-button">Contactez-nous</a>
+    <a href="/contact/" class="cta-button">Contactez-nous</a>
 </div>

@@ -35,4 +35,4 @@ Nous travaillons avec 3 SCIC pilotes pour tester ces protocoles en situation ré
 
 Vous êtes une SCIC ou en cours de transformation ? Vous pouvez rejoindre le groupe de travail.
 
-<a href="mailto:contact@holonsystems.org?subject=Projet Gouvernance SCIC" class="cta-button">En savoir plus</a>
+<a href="/contact/?subject=recherche" class="cta-button">En savoir plus</a>

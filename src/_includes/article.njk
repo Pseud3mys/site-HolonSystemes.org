@@ -43,6 +43,13 @@
                     {% endif %}
                 </header>
 
+                <!-- Image hero optionnelle -->
+                {% if image %}
+                <div class="mb-12">
+                    <img src="{{ image }}" alt="{{ title }}" class="rounded-lg w-full max-w-4xl mx-auto">
+                </div>
+                {% endif %}
+
                 <!-- Contenu de l'article -->
                 <div class="article-content max-w-3xl mx-auto">
                     {{ content | safe }}
