@@ -1,4 +1,4 @@
-﻿---
+---
 layout: base.njk
 title: Communauté - Le Laboratoire Ouvert
 description: Un lieu pour explorer, débattre et construire les modèles de coopération de demain
@@ -7,7 +7,7 @@ permalink: /communaute/
 
 <section class="text-center py-20">
     <h1 class="text-4xl md:text-6xl leading-tight">Un espace de discussion</h1>
-    <p class="mt-6 max-w-3xl mx-auto text-xl">On échange des idées, des problèmes concrets, des tentatives. Et parfois, quand une discussion "prend", ça devient un projet.</p>
+    <p class="mt-6 max-w-3xl mx-auto text-xl">On échange des idées, des problèmes concrets, des tentatives. Et parfois, quand une discussion “prend”, ça devient un projet.</p>
 </section>
 
 <!-- Entrée bénévoles & curieux -->
@@ -16,15 +16,26 @@ permalink: /communaute/
         <div class="text-center mb-10">
             <p class="font-bold text-lg" style="color: var(--accent-color);">ENTRÉE BÉNÉVOLES & CURIEUX</p>
             <h2 class="text-3xl md:text-4xl mt-2 mb-4">Laissez un mot, même petit</h2>
-            <p class="text-xl leading-relaxed max-w-3xl mx-auto">Une question, une réaction, un "ça me parle / ça me gêne", un exemple vécu C'est largement suffisant pour démarrer.</p>
+            <p class="text-xl leading-relaxed max-w-3xl mx-auto">Une question, une réaction, un “ça me parle / ça me gêne”, un exemple vécu… C’est largement suffisant pour démarrer.</p>
         </div>
 
         <div class="bg-white rounded-lg p-8 shadow-sm max-w-4xl mx-auto">
-            <p class="text-lg leading-relaxed mb-6">Ici, on ne demande pas d'être "expert". On discute, on clarifie, on relie des points. Et si un sujet accroche, on le suit dans le temps.</p>
-            <p class="text-lg leading-relaxed mb-6">Si vous voulez aider davantage, on a aussi des coups de main ponctuels (lecture, synthèse, retours, mise en forme).</p>
-            <p class="text-lg leading-relaxed text-center">
-                 <strong>Utilisez la porte d'entrée juste en dessous</strong>, ou allez voir <a href="#carte" class="underline" style="color: var(--accent-color);">la carte des participations</a> en bas de page.
-            </p>
+            <p class="text-lg leading-relaxed mb-5">Ici, on ne demande pas d’être “expert”. On discute, on clarifie, on relie des points. Et si un sujet accroche, on le suit dans le temps.</p>
+            <p class="text-lg leading-relaxed mb-6">Si vous voulez aider davantage, on a aussi des coups de main ponctuels (lecture, synthèse, retours, mise en forme…).</p>
+
+            <div class="bg-gradient-to-br from-accent-light to-white p-6 rounded-lg">
+                <p class="font-bold mb-3" style="color: var(--accent-color);">3 façons simples de contribuer</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>Tester</strong> un prototype et donner un retour honnête (10–30 min).</li>
+                    <li><strong>Clarifier</strong> : synthèse, rédaction, mise en forme, documentation.</li>
+                    <li><strong>Améliorer</strong> : design UI/UX, facilitation, méthode, terrain.</li>
+                </ul>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="/contact/?subject=communaute" class="cta-button">Écrire un message</a>
+                <p class="text-sm text-gray-600 mt-3">Étudiant·e ? Indiquez votre filière, le temps dispo, et ce que vous aimeriez apprendre.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -34,8 +45,8 @@ permalink: /communaute/
      <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-12">
             <p class="font-bold text-lg" style="color: var(--accent-color);">PARTAGEZ VOTRE CONTRIBUTION</p>
-            <h2 class="text-3xl md:text-4xl mt-2 mb-4">Notre porte d'entrée très simple</h2>
-            <p class="text-xl leading-relaxed">Une question, une intuition, une critique, une ressource : postez-la. On s'en sert pour relier, tester et affiner les idées.</p>
+            <h2 class="text-3xl md:text-4xl mt-2 mb-4">Notre porte d’entrée très simple</h2>
+            <p class="text-xl leading-relaxed">Une question, une intuition, une critique, une ressource : postez-la. On s’en sert pour relier, tester et affiner les idées.</p>
         </div>
         
         <!-- Widget IdeoSphere - centré, sans fond -->
@@ -51,7 +62,7 @@ permalink: /communaute/
             </iframe>
         </div>
         
-        <p class="text-center text-sm text-gray-600">Propulsé par <strong>IdeoSphere</strong>  notre plateforme de coopération citoyenne.</p>
+        <p class="text-center text-sm text-gray-600">Propulsé par <strong>IdeoSphere</strong> — notre plateforme de coopération citoyenne.</p>
     </div>
 </section>
 
@@ -63,6 +74,11 @@ permalink: /communaute/
                  <p class="font-bold" style="color: var(--accent-color);">POUR LES ORGANISATIONS</p>
                 <h2 class="text-3xl md:text-4xl mt-2 mb-4">Vous vivez un sujet qui coince ?</h2>
                 <p class="mb-6">Vous pouvez juste décrire la situation en quelques lignes. On échange, on reformule, on propose un premier pas réaliste. Ensuite seulement, on voit si ça mérite un format plus structuré.</p>
+                <ul class="list-disc list-inside mb-8 space-y-2 text-left inline-block">
+                    <li><strong>Clarifier</strong> vite : enjeux, acteurs, points de tension</li>
+                    <li><strong>Rendre discutable</strong> : poser les bonnes questions, calmer le flou</li>
+                    <li><strong>Mettre en mouvement</strong> : options simples, décisions possibles, prochaines actions</li>
+                </ul>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                     <a href="/contact/?subject=probleme-collectif" class="cta-button">Nous écrire</a>
                     <a href="/contact/?subject=terrain" class="cta-button" style="background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);">Voir comment on travaille</a>
@@ -76,11 +92,11 @@ permalink: /communaute/
 </section>
 
 <!-- Carte (décorative + exploratoire) -->
-<section id="carte" class="py-16 md:py-20 border-t border-gray-200">
+<section class="py-16 md:py-20 border-t border-gray-200">
     <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl mb-4">Cartographie des participations</h2>
-            <p class="text-xl leading-relaxed">Une carte vivante de tout ce qui se dit, se teste et se construit ici. Elle se met à jour automatiquement environ toutes les 24h.</p>
+            <h2 class="text-3xl md:text-4xl mb-4">Cartographie vivante (en construction)</h2>
+            <p class="text-xl leading-relaxed">Une carte interactive reliée à nos tests et contributions. Elle se met à jour automatiquement environ toutes les 24h.</p>
         </div>
         
         <div class="max-w-4xl mx-auto">
@@ -94,7 +110,7 @@ permalink: /communaute/
                     title="Cartographie des contributions">
                 </iframe>
             </div>
-            <p class="mt-6 text-center text-sm text-gray-600">Pour l'instant, c'est surtout un espace d'exploration et de tests. Si vous avez une idée de terrain à essayer, envoyez-la !</p>
+            <p class="mt-6 text-center text-sm text-gray-600">Pour l’instant, c’est surtout un espace d’exploration et de tests. Si vous avez une idée de terrain à essayer, envoyez-la !</p>
         </div>
     </div>
 </section>

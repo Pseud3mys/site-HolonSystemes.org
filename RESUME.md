@@ -44,7 +44,7 @@ Holon Systems
 
 ### 4. **Navigation mise à jour**
 - **Header** : Blog / Projets / Communauté
-- **Footer** : Mention "Association (ESS) en préfiguration de SCIC" + liens À propos
+- **Footer** : Mention "association loi 1901 (préfiguration de SCIC)" + liens À propos
 
 ### 5. **Fonctionnalités clés**
 
