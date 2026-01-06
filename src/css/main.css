@@ -1,0 +1,220 @@
+:root {
+    --background-color: #F8F7F2; 
+    --text-color: #2c2c2c; 
+    --accent-color: #A37A55; 
+    --accent-light: #fdfaf7;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+}
+
+/* Liens stylisés avec animation soulignée */
+.link-underline {
+    position: relative;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 400;
+}
+
+.link-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Animation fade-in au scroll */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Bouton CTA */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+
+.cta-button:hover {
+    background-color: #8c6643;
+}
+
+/* Styles spécifiques aux articles */
+.article-content h2 {
+    font-size: 1.875rem; /* text-3xl */
+    margin-top: 2.5rem; /* mt-10 */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.article-content h3 {
+    font-size: 1.5rem; /* text-2xl */
+    margin-top: 2rem; /* mt-8 */
+    margin-bottom: 1rem; /* mb-4 */
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+.article-content h4 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+.article-content p {
+    line-height: 1.75; /* leading-relaxed */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.article-content strong {
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.article-content ul, .article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+}
+
+.article-content .intro-text {
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.75;
+    color: #555;
+    margin-bottom: 2.5rem;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1.5rem;
+}
+
+/* Badges pour tags */
+.tag-badge {
+    display: inline-block;
+    background-color: var(--accent-light);
+    color: var(--accent-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--accent-color);
+}
+
+.tag-badge:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Badge source pour articles externes */
+.source-badge {
+    display: inline-block;
+    background-color: #e5e7eb;
+    color: #6b7280;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+/* Cartes projet */
+.projet-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.projet-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.projet-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.projet-hero video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Filtres de tags */
+.tag-filter {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 0.25rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.tag-filter:hover,
+.tag-filter.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Articles externes */
+.external-article {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid #e5e7eb;
+}
+
+.external-article::before {
+    content: '↗';
+    position: absolute;
+    left: -0.5rem;
+    top: 0;
+    color: #9ca3af;
+}

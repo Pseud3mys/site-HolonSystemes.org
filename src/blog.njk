@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: Blog
+description: Réflexions sur l'ingénierie sociale, les systèmes distribués et l'intelligence collective
+permalink: /blog/
+---
+
+<section class="text-center py-20">
+    <h1 class="text-4xl md:text-6xl leading-tight">Notre Blog</h1>
+    <p class="mt-6 max-w-2xl mx-auto text-xl">Réflexions sur l'ingénierie sociale, les systèmes distribués et l'intelligence collective.</p>
+</section>
+
+<section class="py-16 space-y-20 border-t border-gray-200">
+    
+    {% for article in collections.allArticles %}
+    <article class="{% if article.isExternal %}external-article{% endif %}">
+        <p class="text-sm text-gray-500">
+            {{ article.date | dateToShort }}
+            {% if article.isExternal %}
+            <span class="source-badge ml-2">{{ article.source }}</span>
+            {% endif %}
+        </p>
+        <h2 class="text-3xl md:text-4xl my-3 hover:text-gray-600 transition-colors">
+            {% if article.isExternal %}
+            <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">{{ article.title }}</a>
+            {% else %}
+            <a href="{{ article.url }}">{{ article.title }}</a>
+            {% endif %}
+        </h2>
+        <p class="mb-4">{{ article.excerpt }}</p>
+        
+        {% if article.tags and article.tags.length > 0 %}
+        <div class="mb-4 flex flex-wrap gap-2">
+            {% for tag in article.tags %}
+            <span class="tag-badge">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if article.isExternal %}
+        <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer" class="font-lora" style="color: var(--accent-color);">Lire sur {{ article.source }} →</a>
+        {% else %}
+        <a href="{{ article.url }}" class="font-lora" style="color: var(--accent-color);">Lire la suite →</a>
+        {% endif %}
+    </article>
+    {% endfor %}
+
+</section>

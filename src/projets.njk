@@ -1,0 +1,120 @@
+---
+layout: base.njk
+title: Nos Projets
+description: Découvrez IdeoSphere et nos projets de recherche-action sur la gouvernance distribuée
+permalink: /projets/
+---
+
+<section class="text-center py-20">
+    <h1 class="text-4xl md:text-6xl leading-tight">Nos Projets</h1>
+    <p class="mt-6 max-w-3xl mx-auto text-xl">Outils concrets, recherche-action et expérimentations pour transformer la coopération à grande échelle.</p>
+</section>
+
+<!-- Projets à la une -->
+{% if collections.projetsFeatured.length > 0 %}
+<section class="py-16 border-t border-gray-200">
+    <h2 class="text-3xl md:text-4xl text-center mb-12">Projets Phares</h2>
+    <div class="space-y-16">
+        {% for projet in collections.projetsFeatured %}
+        <div class="bg-white rounded-lg p-8 md:p-12 shadow-sm border border-gray-200">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <p class="text-sm font-bold mb-2" style="color: var(--accent-color);">PROJET PHARE</p>
+                    <h3 class="text-3xl md:text-4xl mb-4">
+                        <a href="{{ projet.url }}" class="hover:text-gray-600 transition-colors">{{ projet.data.title }}</a>
+                    </h3>
+                    <p class="text-xl mb-6">{{ projet.data.tagline }}</p>
+                    <p class="mb-6 leading-relaxed">{{ projet.data.excerpt }}</p>
+                    <a href="{{ projet.url }}" class="cta-button">Découvrir le projet →</a>
+                </div>
+                <div>
+                    {% if projet.data.image %}
+                    <img src="{{ projet.data.image }}" alt="{{ projet.data.title }}" class="rounded-lg w-full">
+                    {% elif projet.data.video %}
+                    <div class="projet-hero">
+                        <video controls class="rounded-lg w-full">
+                            <source src="{{ projet.data.video }}" type="video/mp4">
+                            Votre navigateur ne supporte pas la vidéo.
+                        </video>
+                    </div>
+                    {% else %}
+                    <img src="https://placehold.co/600x400/fdfaf7/A37A55?text={{ projet.data.title | urlencode }}" alt="{{ projet.data.title }}" class="rounded-lg w-full">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Autres projets -->
+<section class="py-16 md:py-20 border-t border-gray-200">
+    <h2 class="text-3xl md:text-4xl text-center mb-12">Projets en Cours & Recherche-Action</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+        {% for projet in collections.projets %}
+        {% if not projet.data.featured %}
+        <div class="projet-card border border-gray-200">
+            <h3 class="text-2xl mb-3">
+                <a href="{{ projet.url }}" class="hover:text-gray-600 transition-colors">{{ projet.data.title }}</a>
+            </h3>
+            <p class="text-base mb-4">{{ projet.data.excerpt }}</p>
+            <a href="{{ projet.url }}" class="link-underline">En savoir plus →</a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Ce qu'on sait faire -->
+<section class="py-16 md:py-24 border-t border-gray-200 bg-gray-50 -mx-6 md:-mx-12 px-6 md:px-12 rounded-lg">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl text-center mb-8">Ce que nous savons faire</h2>
+        <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Au-delà de nos projets, nous accompagnons organisations et collectivités dans leurs transformations.</p>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white p-6 rounded-lg">
+                <h3 class="text-2xl mb-3">Concevoir des protocoles de gouvernance</h3>
+                <p>Processus de décision, modes de coordination, règles du jeu adaptées à vos enjeux.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg">
+                <h3 class="text-2xl mb-3">Outiller une communauté</h3>
+                <p>Plateformes, outils collaboratifs, modération et animation de l'intelligence collective.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg">
+                <h3 class="text-2xl mb-3">Déployer un dispositif participatif</h3>
+                <p>De la conception à la mise en œuvre, accompagnement sur le terrain.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg">
+                <h3 class="text-2xl mb-3">Former et transmettre</h3>
+                <p>Ateliers, formations, accompagnement sur mesure pour vos équipes.</p>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <p class="text-xl mb-6">Vous avez un projet ? Parlons-en.</p>
+            <a href="mailto:contact@holonsystems.org?subject=Projet de collaboration" class="cta-button">Discutons de votre contexte</a>
+        </div>
+    </div>
+</section>
+
+<!-- Rejoindre l'aventure -->
+<section class="py-16 md:py-20 border-t border-gray-200">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl mb-6">Rejoindre l'aventure</h2>
+        <p class="text-xl mb-8 leading-relaxed">Nous cherchons des personnes passionnées par la coopération, l'innovation sociale et les systèmes complexes.</p>
+        
+        <div class="bg-white/50 p-8 rounded-lg border border-gray-200 text-left mb-8">
+            <h3 class="text-2xl mb-4">Profils recherchés</h3>
+            <ul class="space-y-2">
+                <li><strong>Développement & Produit</strong> — Design, dev full-stack, UX/UI</li>
+                <li><strong>Recherche</strong> — Systèmes complexes, sciences sociales, data science</li>
+                <li><strong>Facilitation & Animation</strong> — Médiation, gouvernance, intelligence collective</li>
+                <li><strong>Stratégie & Partenariats</strong> — Relations collectivités, levée de fonds, communication</li>
+            </ul>
+        </div>
+        
+        <p class="mb-6">Vous pouvez contribuer quelques heures par semaine, participer aux tests terrain, ou rejoindre l'association.</p>
+        <a href="mailto:contact@holonsystems.org?subject=Rejoindre Holon Systems" class="cta-button">Contactez-nous</a>
+    </div>
+</section>

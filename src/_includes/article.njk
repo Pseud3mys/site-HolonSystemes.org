@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}Holon Systems</title>
+    <link rel="icon" type="image/svg+xml" href="/public/logo-gris.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Lora (serif) & Lato (sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    {% if description %}
+    <meta name="description" content="{{ description }}">
+    {% endif %}
+</head>
+<body class="text-lg">
+    
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl">
+        
+        {% include "header.njk" %}
+        
+        <main>
+            <article class="py-16 md:py-24 border-t border-gray-200">
+                
+                <!-- En-tête de l'article -->
+                <header class="text-center mb-16">
+                    <p class="text-sm text-gray-500">{{ date | dateToShort }}</p>
+                    <h1 class="text-4xl md:text-5xl leading-tight mt-4">{{ title }}</h1>
+                    {% if tags and tags.length > 0 %}
+                    <div class="mt-4 flex justify-center flex-wrap gap-2">
+                        {% for tag in tags %}
+                        <span class="tag-badge">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </header>
+
+                <!-- Contenu de l'article -->
+                <div class="article-content max-w-3xl mx-auto">
+                    {{ content | safe }}
+                </div>
+
+            </article>
+
+            <div class="text-center py-16 border-t border-gray-200">
+                <a href="/blog/" class="link-underline text-xl">← Retour au blog</a>
+            </div>
+        </main>
+        
+        {% include "footer.njk" %}
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Blog Exemple",
+    "url": "https://example.com/rss",
+    "tags": ["exemple", "veille"],
+    "maxItems": 5
+  }
+]
