@@ -1,27 +1,23 @@
 ---
 layout: projet.njk
 title: "IdeoSphere"
-tagline: "GitHub pour l'action citoyenne"
+tagline: "Relier des idées, les améliorer, et les rendre actionnables"
 featured: true
-excerpt: "Une plateforme qui permet aux citoyens de co-construire des programmes politiques locaux en s'inspirant du modèle fork/pull request du développement logiciel."
+excerpt: "Une plateforme de co-création : recueillir des idées, les relier, les améliorer ensemble, puis les transformer en actions, en propositions de programme ou en pistes pour un budget participatif."
 status: "Déployé pour les municipales 2025"
 ---
 
 ## Le problème
 
-Les programmes politiques sont souvent écrits en vase clos, par des équipes restreintes. Les citoyens qui veulent contribuer n'ont pas d'espace structuré pour le faire. Résultat : des propositions déconnectées du terrain et une participation limitée à quelques réunions publiques.
+Beaucoup de décisions publiques (et même de projets associatifs) se fabriquent encore en vase clos. Les personnes qui veulent contribuer n'ont pas d'espace simple pour déposer une idée, la faire grandir avec d'autres, et voir ce qu'elle devient.
 
-## Notre approche : s'inspirer de GitHub
+Résultat : des propositions déconnectées du terrain, une participation réduite à quelques réunions, et beaucoup d'énergie dissipée.
 
-Le modèle de **fork** et de **pull request** a révolutionné le développement logiciel en permettant à des milliers de contributeurs de collaborer sur des projets complexes. Nous pensons qu'il peut faire de même pour les projets citoyens.
+## Notre approche : une coopérative d'idées
 
-### Comment ça marche ?
+L'idée est simple : créer un espace où les habitants peuvent **déposer des idées**, les **relier** entre elles, les **améliorer** collectivement, puis les rendre utilisables.
 
-1. **Une équipe publie un programme de base** (ex : liste municipale)
-2. **Les citoyens peuvent "forker" des propositions** — créer des variantes, enrichir, amender
-3. **Débat structuré** sur chaque proposition via des fils de discussion
-4. **Merge des meilleures idées** dans le programme officiel après validation collective
-5. **Traçabilité totale** : qui a proposé quoi, quand, et pourquoi
+Ce n'est pas "juste" un programme électoral : c'est un endroit où des gens co-créent **entre eux**, et où les idées peuvent ensuite être orientées vers plusieurs voies (action, programme, budget participatif, etc.).
 
 ## Déploiement terrain : Municipales 2025
 
@@ -33,15 +29,24 @@ IdeoSphere a été déployé dans **plusieurs listes citoyennes** pour les élec
 
 ### Ce qu'on apprend
 
-- L'**onboarding** est clé : les citoyens ne sont pas des développeurs, il faut simplifier l'UX
+- L'entrée doit être très simple : personne ne devrait avoir besoin d'"apprendre un outil" pour contribuer
 - Le **rôle de modération** est crucial pour maintenir la qualité des échanges
 - La **transparence** sur les décisions finales est essentielle pour maintenir la confiance
+
+### Comment ça marche (en pratique)
+
+Ce n'est pas un "gros chantier" porté par une équipe centrale : c'est une dynamique collective faite de petits gestes.
+
+Quelqu'un **dépose une idée** (un problème, une intuition, une piste, une ressource). D'autres viennent **relier et clarifier** : repérer les doublons, ajouter un lien, préciser un désaccord.
+
+Au fil des échanges, l'idée se **muscle** : exemples de terrain, chiffres, contraintes, contre-arguments. Et quand ça devient assez clair, on la **rend actionnable** (une version courte et une version testable).
+
+À la fin, on peut l'**orienter** là où elle a le plus de chances de vivre : une action concrète, une proposition de programme, une piste pour un budget participatif, ou une expérimentation locale. Et tout reste **traçable** : l'historique des contributions et des décisions.
 
 ## Prochaines étapes
 
 - **Amélioration UX** basée sur les retours terrain
-- **Intégration de mécanismes de vote** pour prioriser les propositions
-- **Extension au-delà du cadre électoral** : projets associatifs, coopératives, collectifs
+- **Extension au-delà du cadre électoral** : associations, collectifs, budgets participatifs, coopératives
 
 ## Vidéo de démonstration
 
