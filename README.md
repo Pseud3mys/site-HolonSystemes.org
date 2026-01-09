@@ -1,6 +1,7 @@
 # Holon Systems - Site Web
 
 Site web officiel de Holon Systems, association ESS en préfiguration de SCIC.
+deplayer via filezila.
 
 ## 🏗️ Architecture
 
