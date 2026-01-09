@@ -5,7 +5,9 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "clean": "rimraf _site"
+    "clean": "rimraf _site",
+    "deploy": "node deploy.js",
+    "ship": "npm run build && npm run deploy"
   },
   "keywords": [
     "eleventy",
@@ -16,10 +18,11 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "ftp-deploy": "^2.4.7",
     "rimraf": "^5.0.5"
   },
   "dependencies": {
-    "rss-parser": "^3.13.0",
-    "luxon": "^3.4.4"
+    "luxon": "^3.4.4",
+    "rss-parser": "^3.13.0"
   }
 }
