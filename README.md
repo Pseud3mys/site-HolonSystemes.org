@@ -1,3 +1,7 @@
+pour envoyer au serveur ftp ovh: npm run ship 
+(ou juste npm run deploy)
+
+
 # Holon Systems - Site Web
 
 Site web officiel de Holon Systems, association ESS en préfiguration de SCIC.
