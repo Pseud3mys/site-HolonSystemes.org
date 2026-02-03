@@ -4,7 +4,7 @@ title: "IdeoSphere"
 tagline: "Relier des idées, les améliorer, et les rendre actionnables"
 featured: true
 excerpt: "Une plateforme de co-création : recueillir des idées, les relier, les améliorer ensemble, puis les transformer en actions, en propositions de programme ou en pistes pour un budget participatif."
-status: "Déployé pour les municipales 2025"
+status: "Déployé pour les municipales 2026"
 ---
 
 ## Le problème
@@ -19,9 +19,9 @@ L'idée est simple : créer un espace où les habitants peuvent **déposer des i
 
 Ce n'est pas "juste" un programme électoral : c'est un endroit où des gens co-créent **entre eux**, et où les idées peuvent ensuite être orientées vers plusieurs voies (action, programme, budget participatif, etc.).
 
-## Déploiement terrain : Municipales 2025
+## Déploiement terrain : Municipales 2026
 
-IdeoSphere a été déployé dans **plusieurs listes citoyennes** pour les élections municipales de 2025. Les résultats sont encourageants :
+IdeoSphere a été déployé dans **plusieurs listes citoyennes** pour les élections municipales de 2026. Les résultats sont encourageants :
 
 - **250+ contributions** sur 3 listes pilotes
 - **Enrichissement de 40% du programme** grâce aux contributions citoyennes
