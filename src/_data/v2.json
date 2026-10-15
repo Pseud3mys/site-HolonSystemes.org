@@ -1,6 +1,6 @@
 {
-  "base": "/v2",
-  "noindex": true,
+  "base": "",
+  "noindex": false,
   "statut": "association loi 1901 de l'ESS, en préfiguration de SCIC",
   "email": "contact@holonsystems.org",
   "nav": [

@@ -231,12 +231,12 @@ Pour toute question : [contact@holonsystems.org](mailto:contact@holonsystems.org
 
 **Made with ❤️ by Holon Systems — Association ESS en préfiguration de SCIC**
 
-## 🧪 Version 2 (en préparation)
+## 🧭 Site principal (V2) et ancienne version
 
-Une seconde version du site (positionnement « concertation territoriale ») est construite à côté de l'actuelle, sans la modifier :
+Le site principal (positionnement « concertation territoriale ») est servi à la racine :
 
-- Pages : `src/v2/` (accueil, intercommunalités, communes, écosystème, méthode, contact), publiées sous `/v2/`
+- Pages : `src/v2/` (accueil, intercommunalités, communes, écosystème, entreprises, méthode, contact)
 - Gabarits : `src/_includes/v2/` · Styles complémentaires : `src/css/v2.css` (le socle `main.css` est partagé)
-- Réglages : `src/_data/v2.json` (`base` = préfixe d'URL, `noindex` = masquer aux moteurs de recherche, `statut`, menu)
+- Réglages : `src/_data/v2.json` (`base` = préfixe d'URL, vide pour la racine ; `noindex` ; `statut` ; menu)
 
-Pour basculer la V2 à la racine du site : mettre `"base": ""` et `"noindex": false` dans `v2.json`, puis retirer ou déplacer les anciennes pages qui occupent les mêmes URL (`/`, `/contact/`).
+L'ancienne version reste en ligne : accueil sous `/v1/`, contact sous `/v1/contact/`, et les pages `/blog/`, `/projets/`, `/communaute/`, `/a-propos/` à leur adresse d'origine (elles ne sont plus liées depuis le nouveau site).
