@@ -1,0 +1,267 @@
+/* ===== Composants V2 — s'ajoutent au socle main.css (mêmes couleurs, mêmes polices) ===== */
+
+/* Lien de navigation de la page en cours */
+.link-underline.is-current::after {
+    transform: scaleX(1);
+}
+
+/* Boutons */
+.cta-small {
+    padding: 0.5rem 1.1rem;
+    font-size: 1rem;
+}
+
+.cta-outline {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-outline:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Petit intitulé au-dessus des titres */
+.eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+/* Chiffres clés */
+.stat-figure {
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent-color);
+}
+
+@media (min-width: 768px) {
+    .stat-figure {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mention de source sous un chiffre */
+.source-note {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+/* Cartes d'aiguillage (accueil) */
+.door-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.door-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-color);
+}
+
+.door-card .door-link {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    font-family: 'Lora', serif;
+    color: var(--accent-color);
+}
+
+/* Encadré mis en avant (même filet que .intro-text) */
+.callout {
+    border-left: 3px solid var(--accent-color);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+}
+
+/* Numéro de pilier / d'étape */
+.step-number {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 9999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--accent-light);
+}
+
+/* Frise de déroulé */
+.timeline {
+    border-left: 1px solid #d6d3cb;
+    margin-left: 1.25rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.4rem;
+    top: 0.45rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 9999px;
+    background-color: var(--accent-color);
+}
+
+/* Tableaux de chiffres */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+.data-table thead th {
+    font-weight: 700;
+    font-size: 0.85rem;
+    background-color: var(--accent-light);
+    color: #4b4b4b;
+}
+
+.data-table td.num,
+.data-table th.num {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.data-table tr.highlight td {
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+/* Listes à puces sobres */
+.check-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+.check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0.2rem;
+    top: 0.65em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background-color: var(--accent-color);
+}
+
+.cross-list li::before {
+    background-color: #9ca3af;
+}
+
+/* Exemple de question posée */
+.question-sample {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    background-color: var(--accent-light);
+    border: 1px solid #ece3d9;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+}
+
+/* Bloc pleine largeur légèrement teinté (même principe que les pages actuelles) */
+.band {
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Navigation mobile */
+.v2-mobile-nav {
+    position: relative;
+}
+
+.v2-mobile-nav summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-weight: 700;
+    border: 1px solid var(--accent-color);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 1rem;
+}
+
+.v2-mobile-nav summary::-webkit-details-marker {
+    display: none;
+}
+
+.v2-mobile-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 15rem;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.v2-mobile-panel a:not(.cta-button) {
+    padding: 0.5rem 0.25rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* Ancre : laisser respirer le titre sous le haut de l'écran */
+[id] {
+    scroll-margin-top: 2rem;
+}
+
+/* Sous-titre en Lato gras (comme les h3 des articles) */
+.title-sans {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+/* Empêche un tableau large d'élargir sa colonne de grille (et la page) sur mobile */
+.grid > * {
+    min-width: 0;
+}

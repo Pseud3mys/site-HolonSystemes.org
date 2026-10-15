@@ -1,0 +1,25 @@
+<header class="py-10 md:py-12 flex justify-between items-center gap-6">
+    <a href="{{ v2.base }}/" class="font-lora text-2xl font-normal flex items-center gap-3 shrink-0">
+        <img src="/public/logo-gris.svg" alt="Logo Holon Systems" class="h-8 w-8">
+        <span>Holon Systems</span>
+    </a>
+
+    <!-- Navigation large écran -->
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">
+        {% for item in v2.nav %}
+        <a href="{{ v2.base }}{{ item.path }}" class="link-underline{% if page.url == v2.base + item.path %} is-current{% endif %}">{{ item.label }}</a>
+        {% endfor %}
+        <a href="{{ v2.base }}/contact/" class="cta-button cta-small">Nous écrire</a>
+    </nav>
+
+    <!-- Navigation mobile (sans JavaScript) -->
+    <details class="v2-mobile-nav lg:hidden">
+        <summary aria-label="Ouvrir le menu">Menu</summary>
+        <nav class="v2-mobile-panel" aria-label="Navigation principale">
+            {% for item in v2.nav %}
+            <a href="{{ v2.base }}{{ item.path }}">{{ item.label }}</a>
+            {% endfor %}
+            <a href="{{ v2.base }}/contact/" class="cta-button text-center mt-2">Nous écrire</a>
+        </nav>
+    </details>
+</header>
