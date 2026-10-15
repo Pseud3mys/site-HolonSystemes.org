@@ -1,5 +1,5 @@
 ---
-layout: projet.njk
+layout: v1/projet.njk
 title: "Listes citoyennes aux municipales (2014–2020)"
 tagline: "Ce qui a marché, ce qui a cassé, et pourquoi ça épuise"
 featured: false
@@ -36,4 +36,4 @@ Ce projet vise à regarder ce qui s'est vraiment passé, sans romantiser ni tape
 
 Si vous avez vécu une liste citoyenne aux municipales (de l'intérieur ou au contact), un récit court de "ce qui a marché / pas marché" nous intéresse.
 
-<a href="/communaute/" class="cta-button">Partager un retour →</a>
+<a href="/v1/communaute/" class="cta-button">Partager un retour →</a>

@@ -1,0 +1,98 @@
+---
+layout: v2/base.njk
+title: Blog
+description: Articles et réflexions de l'équipe Holon Systems et de ses membres.
+permalink: /blog/
+---
+
+<section class="py-16 md:py-20">
+    <p class="eyebrow mb-6">Blog</p>
+    <h1 class="text-4xl md:text-5xl leading-tight max-w-4xl">Articles et réflexions.</h1>
+    <p class="mt-6 max-w-3xl text-xl leading-relaxed">Les écrits de l'équipe Holon Systems et de ses membres.</p>
+</section>
+
+<!-- Filtres -->
+<section class="py-5 border-t border-gray-200">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+        <span class="eyebrow">Filtrer</span>
+        <div class="flex flex-wrap items-center gap-2">
+            <button class="filter-btn active" data-filter="all" data-type="source">Tous</button>
+            {% for source in collections.sources %}
+            <button class="filter-btn" data-filter="{{ source }}" data-type="source">{{ source }}</button>
+            {% endfor %}
+        </div>
+        <span class="text-gray-300 hidden sm:inline">|</span>
+        <div class="flex flex-wrap items-center gap-2">
+            {% for tag in collections.tagsList %}
+            <button class="filter-btn tag-filter" data-filter="{{ tag }}" data-type="tag">{{ tag }}</button>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Articles -->
+<section class="py-10 border-t border-gray-200 space-y-12">
+    {% for article in collections.allArticles %}
+    <article class="article-item" data-source="{{ article.source }}" data-tags="{{ article.tags | join(',') }}">
+        <p class="text-sm text-gray-500">
+            {{ article.date | dateToShort }}
+            <span class="source-badge ml-2">{{ article.source }}</span>
+        </p>
+        <h2 class="text-3xl my-3">
+            {% if article.isExternal %}
+            <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer" class="hover:text-gray-600 transition-colors">{{ article.title }}</a>
+            {% else %}
+            <a href="{{ article.url }}" class="hover:text-gray-600 transition-colors">{{ article.title }}</a>
+            {% endif %}
+        </h2>
+        <p class="mb-4 leading-relaxed">{{ article.excerpt | truncate(320) }}</p>
+        {% if article.tags and article.tags.length > 0 %}
+        <div class="mb-4 flex flex-wrap gap-2">
+            {% for tag in article.tags %}
+            <span class="tag-badge">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if article.isExternal %}
+        <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer" class="link-underline">Lire sur {{ article.source }} →</a>
+        {% else %}
+        <a href="{{ article.url }}" class="link-underline">Lire la suite →</a>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.article-item');
+    let activeSourceFilter = 'all';
+    let activeTagFilters = [];
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            const type = this.getAttribute('data-type');
+
+            if (type === 'source') {
+                document.querySelectorAll('.filter-btn[data-type="source"]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeSourceFilter = filter;
+            } else if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                activeTagFilters = activeTagFilters.filter(t => t !== filter);
+            } else {
+                this.classList.add('active');
+                activeTagFilters.push(filter);
+            }
+
+            articles.forEach(article => {
+                const articleTags = article.getAttribute('data-tags').split(',').filter(t => t.trim());
+                const sourceMatch = activeSourceFilter === 'all' || article.getAttribute('data-source') === activeSourceFilter;
+                const tagMatch = activeTagFilters.every(t => articleTags.includes(t));
+                article.style.display = sourceMatch && tagMatch ? 'block' : 'none';
+            });
+        });
+    });
+});
+</script>

@@ -1,5 +1,5 @@
 ---
-layout: projet.njk
+layout: v1/projet.njk
 title: "Veille réseaux sociaux & dynamiques de groupe"
 tagline: "Comprendre ce qui fait qu'on se met (ou non) à faire ensemble"
 featured: false
@@ -29,4 +29,4 @@ Ce projet sert à observer, documenter et tester les conditions qui font qu'un g
 
 Vous avez un exemple vécu (réseau en feu, groupe qui s'effondre, collectif qui décolle) ? Une capture, un lien, un récit court : ça compte.
 
-<a href="/communaute/" class="cta-button">Déposer une trace →</a>
+<a href="/v1/communaute/" class="cta-button">Déposer une trace →</a>

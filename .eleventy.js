@@ -23,18 +23,18 @@ module.exports = function(eleventyConfig) {
   
   // Collection pour les articles du blog (manuels)
   eleventyConfig.addCollection("blogPosts", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/content/blog/*.md")
+    return collectionApi.getFilteredByGlob("src/v2/content/blog/*.md")
       .sort((a, b) => b.date - a.date);
   });
   
   // Collection pour les projets
   eleventyConfig.addCollection("projets", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/content/projets/*.md");
+    return collectionApi.getFilteredByGlob("src/v1/content/projets/*.md");
   });
   
   // Collection pour les projets à la une
   eleventyConfig.addCollection("projetsFeatured", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/content/projets/*.md")
+    return collectionApi.getFilteredByGlob("src/v1/content/projets/*.md")
       .filter(item => item.data.featured === true);
   });
   
@@ -58,7 +58,7 @@ module.exports = function(eleventyConfig) {
     }
     
     // Récupérer les articles manuels
-    const manualPosts = collectionApi.getFilteredByGlob("src/content/blog/*.md");
+    const manualPosts = collectionApi.getFilteredByGlob("src/v2/content/blog/*.md");
     manualPosts.forEach(post => {
       // Fusionner les tags de l'article avec les tags de la source
       const articleTags = post.data.tags || [];

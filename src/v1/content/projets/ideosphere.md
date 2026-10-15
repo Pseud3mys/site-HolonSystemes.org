@@ -1,5 +1,5 @@
 ---
-layout: projet.njk
+layout: v1/projet.njk
 title: "IdeoSphere"
 tagline: "Relier des idées, les améliorer, et les rendre actionnables"
 featured: true
@@ -78,5 +78,5 @@ Au fil des échanges, l'idée se **muscle** : exemples de terrain, chiffres, con
 Que vous soyez une liste citoyenne, une association, une coopérative ou un collectif, nous pouvons vous accompagner dans le déploiement d'IdeoSphere.
 
 <div class="text-center my-8">
-    <a href="/contact/" class="cta-button">Contactez-nous</a>
+    <a href="/v1/contact/" class="cta-button">Contactez-nous</a>
 </div>

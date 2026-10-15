@@ -1,5 +1,6 @@
 ---
-layout: article.njk
+layout: v2/article.njk
+permalink: /blog/repenser-la-societe/
 title: "Repenser la société : aux sources de notre vision"
 date: 2025-09-08
 tags: ["ingénierie sociale", "systèmes complexes", "théorie"]

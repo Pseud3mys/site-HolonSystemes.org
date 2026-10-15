@@ -265,3 +265,26 @@
 .grid > * {
     min-width: 0;
 }
+
+/* Filtres du blog */
+.filter-btn {
+    padding: 0.25rem 0.65rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.filter-btn.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}

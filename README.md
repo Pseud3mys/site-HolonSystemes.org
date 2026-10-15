@@ -79,12 +79,13 @@ site-HolonSystemes.org/
 
 ### Ajouter un article de blog
 
-1. Créer un fichier `.md` dans `src/content/blog/`
+1. Créer un fichier `.md` dans `src/v2/content/blog/`
 2. Ajouter le front matter YAML :
 
 ```markdown
 ---
-layout: article.njk
+layout: v2/article.njk
+permalink: /blog/mon-article/
 title: "Titre de l'article"
 date: 2026-01-06
 tags: ["tag1", "tag2"]
@@ -98,7 +99,7 @@ Contenu de l'article en Markdown...
 
 ### Ajouter un projet
 
-1. Créer un fichier `.md` dans `src/content/projets/`
+1. Créer un fichier `.md` dans `src/v1/content/projets/`
 2. Ajouter le front matter :
 
 ```markdown
@@ -235,8 +236,8 @@ Pour toute question : [contact@holonsystems.org](mailto:contact@holonsystems.org
 
 Le site principal (positionnement « concertation territoriale ») est servi à la racine :
 
-- Pages : `src/v2/` (accueil, intercommunalités, communes, écosystème, entreprises, méthode, contact)
+- Pages : `src/v2/` (accueil, intercommunalités, communes, écosystème, entreprises, méthode, contact, blog) · articles dans `src/v2/content/blog/`
 - Gabarits : `src/_includes/v2/` · Styles complémentaires : `src/css/v2.css` (le socle `main.css` est partagé)
 - Réglages : `src/_data/v2.json` (`base` = préfixe d'URL, vide pour la racine ; `noindex` ; `statut` ; menu)
 
-L'ancienne version reste en ligne : accueil sous `/v1/`, contact sous `/v1/contact/`, et les pages `/blog/`, `/projets/`, `/communaute/`, `/a-propos/` à leur adresse d'origine (elles ne sont plus liées depuis le nouveau site).
+L'ancienne version (V1) reste consultable sous `/v1/` : sources dans `src/v1/` (pages et `content/projets`), gabarits dans `src/_includes/v1/`. Elle n'est plus liée depuis le nouveau site.
